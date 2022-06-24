@@ -18,7 +18,7 @@ import {CreateFreeAccountData} from './pagedata/PageData';
     await CreateFreeAccount.signUp();
   });
 
-  test.only(`Email confirmation and account creation confirmation` , async({page})=>{
+  test(`Email confirmation and account creation confirmation` , async({page})=>{
     //Step1 : Go to 'yop mail' home page
     await page.goto("https://yopmail.com/en/");
 

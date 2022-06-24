@@ -39,6 +39,9 @@ export const myWidgetPageData = {
 }
 
 export const CreateFreeAccountData = {
+  email : 'ssh@yopmail.com',
+  password : 'Password123',
+  fullName : 'Siam Hasan',
   createFreeAccount : 'Create Free Account',
   googleSignUpButtonText : 'Sign up with Google'
 }

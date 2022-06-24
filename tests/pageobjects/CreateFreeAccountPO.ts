@@ -1,4 +1,5 @@
 import {Locator, Page } from "@playwright/test";
+import {CreateFreeAccountData} from '../pagedata/PageData';
 
 export class CreateFreeAccountPO {
     readonly page: Page
@@ -29,9 +30,9 @@ export class CreateFreeAccountPO {
     = Filling up the input fields and Clicking the 'Sign up' button
     */
     async signUp() {
-      await this.email.fill("ssh@ypmail.com");
-      await this.password.fill('Password123');
-      await this.fullname.fill('Siam Hasan');
+      await this.email.fill(CreateFreeAccountData.email);
+      await this.password.fill(CreateFreeAccountData.password);
+      await this.fullname.fill(CreateFreeAccountData.fullName);
       await this.signUpBtn.click();
       await this.page.waitForTimeout(3000);
     }
@@ -40,8 +41,8 @@ export class CreateFreeAccountPO {
     = Filling up the input fields and Clicking the 'Log in' button
     */
     async logIn() {
-      await this.email.fill("ssh@yopmail.com");
-      await this.password.fill('Password123');
+      await this.email.fill(CreateFreeAccountData.email);
+      await this.password.fill(CreateFreeAccountData.password);
       await this.loginBtn.click();
       await this.page.waitForTimeout(3000);
     }
