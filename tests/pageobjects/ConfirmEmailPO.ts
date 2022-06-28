@@ -1,4 +1,6 @@
 import { FrameLocator, Locator, Page } from "@playwright/test";
+import {CreateFreeAccountData} from '../pagedata/PageData';
+
 export class ConfirmEmailPO {
     readonly page: Page
     readonly emailInputField: Locator;
@@ -26,7 +28,7 @@ export class ConfirmEmailPO {
     = Sign in and got to inbox
     */
     async goToInbox() {
-      await this.emailInputField.fill('ssh@yopmail.com');
+      await this.emailInputField.fill(CreateFreeAccountData.email);
       await this.emailSubmitBtn.click();
       await this.page.waitForTimeout(3000);
     }

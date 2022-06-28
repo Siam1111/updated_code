@@ -10,5 +10,8 @@ export const delay = async (t: number): Promise<undefined> =>
   var date = Date.now();
   export const currentTime = date.toString();
 
+  var d = new Date();
+  export const currentYearMonthDate = d.getFullYear() + d.getMonth() + d.getDate() + d.getHours() + d.getMinutes();
+
 
   

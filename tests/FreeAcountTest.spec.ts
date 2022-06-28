@@ -4,21 +4,22 @@ import {CreateFreeAccountPO} from './pageobjects/CreateFreeAccountPO';
 import {CreateFreeAccountData} from './pagedata/PageData';
 import { LoginPO } from "../tests/pageobjects/LoginPO";
 
+test.describe('Verifying user can create a free account' , () =>{
   test(`Signing up` , async({page})=>{
     //Step1 : Go to home page
     await page.goto(`https://app.utilitygenius.com/`);
     const CreateFreeAccount = new CreateFreeAccountPO(page);
 
     //Step2 : Verify and Click on the Create Free Account Button
-    await expect(CreateFreeAccount.createFreeAccountButtonText).toEqual(CreateFreeAccountData.createFreeAccount);
+    await expect(CreateFreeAccount.createFreeAccountBtn).toHaveText(CreateFreeAccountData.createFreeAccount);
     await CreateFreeAccount.createFreeAccountBtn.click();
 
     //Step3 : Verify google sign up option and Sign up 
-    await expect(CreateFreeAccount.googleSignUpText).toEqual(CreateFreeAccountData.googleSignUpButtonText);
+    await expect(CreateFreeAccount.googleSignupBtn).toHaveText(CreateFreeAccountData.googleSignUpButtonText);
     await CreateFreeAccount.signUp();
   });
 
-  test(`Email confirmation and account creation confirmation` , async({page})=>{
+  test.only(`Email confirmation and account creation confirmation` , async({page})=>{
     //Step1 : Go to 'yop mail' home page
     await page.goto("https://yopmail.com/en/");
 
@@ -34,8 +35,10 @@ import { LoginPO } from "../tests/pageobjects/LoginPO";
     const Login = new LoginPO(page);
    
     // Step5 : User login with valid credentials
-    await Login.enterLoginCredentialsAndClickOnLoginButtonFreeAccount();
+    await Login.enterLoginCredentialsAndClickOnLoginButton();
 
     // Step6 : Verify home page URl
     await Login.verifyUpgradeAccountVisible();
   });
+})
+  

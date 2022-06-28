@@ -1,4 +1,4 @@
-import { randomString } from "../../helpers/util";
+import { randomString , currentYearMonthDate } from "../../helpers/util";
 
 export const LoginData = {
   email: "testdata@yopmail.com",
@@ -39,7 +39,7 @@ export const myWidgetPageData = {
 }
 
 export const CreateFreeAccountData = {
-  email : 'ssh@yopmail.com',
+  email : `sh${currentYearMonthDate}@yopmail.com`,
   password : 'Password123',
   fullName : 'Siam Hasan',
   createFreeAccount : 'Create Free Account',
