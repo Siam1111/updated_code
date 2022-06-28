@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { SearchRebatesPO } from './pageobjects/SearchRebatesPO';
 
-test(`Verify is widget clickable`, async ({page}) => {
+test(`Verify widget clickability`, async ({page}) => {
   //Step 1: Go to home page
   await page.goto(`https://app.utilitygenius.com/`);
   const RebatesPage = new SearchRebatesPO(page);

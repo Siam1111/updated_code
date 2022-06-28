@@ -19,7 +19,7 @@ test.describe('Verifying user can create a free account' , () =>{
     await CreateFreeAccount.signUp();
   });
 
-  test.only(`Email confirmation and account creation confirmation` , async({page})=>{
+  test(`Email confirmation and account creation confirmation` , async({page , context})=>{
     //Step1 : Go to 'yop mail' home page
     await page.goto("https://yopmail.com/en/");
 
@@ -31,11 +31,12 @@ test.describe('Verifying user can create a free account' , () =>{
     await ConfirmEmail.clickOnConfirmEmail();
 
     //Step4 : Log in and Verify account creation and upgrade account !!! (Got stuck there)
-    await page.goto('/');
-    const Login = new LoginPO(page);
+    const npage = await context.newPage();
+    await npage.goto('/');
+    const Login = new LoginPO(npage);
    
     // Step5 : User login with valid credentials
-    await Login.enterLoginCredentialsAndClickOnLoginButton();
+    await Login.enterLoginCredentialsAndClickOnLoginButtonFreeAccount();
 
     // Step6 : Verify home page URl
     await Login.verifyUpgradeAccountVisible();
