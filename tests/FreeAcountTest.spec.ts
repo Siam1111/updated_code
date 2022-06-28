@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { ConfirmEmailPO } from './pageobjects/ConfirmEmailPO';
 import {CreateFreeAccountPO} from './pageobjects/CreateFreeAccountPO';
 import {CreateFreeAccountData} from './pagedata/PageData';
-
+import { LoginPO } from "../tests/pageobjects/LoginPO";
 
   test(`Signing up` , async({page})=>{
     //Step1 : Go to home page
@@ -30,7 +30,12 @@ import {CreateFreeAccountData} from './pagedata/PageData';
     await ConfirmEmail.clickOnConfirmEmail();
 
     //Step4 : Log in and Verify account creation and upgrade account !!! (Got stuck there)
-    const loginBtn = await page.locator('#auth0-lock-container-1'); // Can't find element
-    await expect(loginBtn).toBeVisible();
-    await page.waitForTimeout(2000);
+    await page.goto('/');
+    const Login = new LoginPO(page);
+   
+    // Step5 : User login with valid credentials
+    await Login.enterLoginCredentialsAndClickOnLoginButtonFreeAccount();
+
+    // Step6 : Verify home page URl
+    await Login.verifyUpgradeAccountVisible();
   });
